@@ -1,13 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import EncryptionForm
+from random import shuffle
 
 # Create your views here.
 
-class Desplazamiento:
-    def __init__(self, T, k):
+class Sustitucion:
+    def __init__(self, T):
         self.T = T
-        self.k = k
+        self.k = shuffle(list(range(256)))
+
+    def __inv(self):
+        temp = {}
+        inv = []
+        for i in range(len(self.k)):
+            temp[self.k[i]] = i
+        for i in range(len(self.k)):
+            inv.append(temp[i])
+        return inv
 
     def __preProcess(self):
         r = []
@@ -25,28 +35,25 @@ class Desplazamiento:
     def encryption(self):
         cripText = self.__preProcess()
         for i in range(len(cripText)):
-            cripText[i] += self.k
-            cripText[i] %= 256  # Adjust for the 256-character range
+            cripText[i] = self.k[cripText[i]]
         return self.__postProcess(cripText)
 
     def decryption(self):
         clearText = self.__preProcess()
+        inv = self.__inv()
         for i in range(len(clearText)):
-            if isinstance(clearText[i], int):
-                clearText[i] -= self.k
-                clearText[i] %= 256  # Adjust for the 256-character range
+            clearText[i] = inv[clearText[i]]
         return self.__postProcess(clearText)
 
-def print_desplazamiento(request):
+def print_sustitucion(request):
     if request.method == 'POST':
         form = EncryptionForm(request.POST)
         if form.is_valid():
             text_to_encrypt = form.cleaned_data['text_input']
-            k_value = form.cleaned_data['k_value']
             action = form.cleaned_data['action']
             
             if action == 'encrypt':
-                tc = Desplazamiento(text_to_encrypt, k_value)
+                tc = Sustitucion(text_to_encrypt)
                 enc = tc.encryption()
                 context = {
                     'original_text': text_to_encrypt,
@@ -55,7 +62,7 @@ def print_desplazamiento(request):
                 }
                 
             elif action == 'decrypt':
-                tc = Desplazamiento(text_to_encrypt, k_value)
+                tc = Sustitucion(text_to_encrypt)
                 dec = tc.decryption()
                 context = {
                     'original_text': text_to_encrypt,
@@ -64,9 +71,9 @@ def print_desplazamiento(request):
                 }
                 
             context['form'] = form
-            return render(request, 'desplazamiento.html', context)
+            return render(request, 'sustitucion.html', context)
     else:
         form = EncryptionForm()
 
     context = {'form': form}
-    return render(request, 'desplazamiento.html', context)
+    return render(request, 'sustitucion.html', context)
