@@ -22,5 +22,7 @@ from vigenere import views   # Asegúrate de importar correctamente las vistas
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vigenere/', views.vigenere, name='vigenere'),
-    path('desplazamiento/', include('desplazamiento.urls'))
+    path('desplazamiento/', include('desplazamiento.urls')),
+    path('multiplicativo/', include('multiplicativo.urls')),
+    path('sustitucion/', include('sustitucion.urls'))
 ]
