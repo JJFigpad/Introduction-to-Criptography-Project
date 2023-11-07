@@ -1,6 +1,7 @@
 # Función para cifrar un texto usando el cifrado de Vigenère
 
 def vigenere_cipher(text, key):
+    text = text.replace(" ","")
     encrypted_text = ""  # Inicializa la variable para almacenar el texto cifrado
     key_length = len(key)  # Obtiene la longitud de la clave
 
@@ -26,6 +27,7 @@ def vigenere_cipher(text, key):
 
 # Función para descifrar un texto cifrado con el cifrado de Vigenère
 def vigenere_decipher(text, key):
+    text = text.replace(" ","")
     decrypted_text = ""  # Inicializa la variable para almacenar el texto descifrado
     key_length = len(key)  # Obtiene la longitud de la clave
 
