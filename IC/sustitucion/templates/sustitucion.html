@@ -25,10 +25,12 @@
         {% if action == 'Encryption' %}
             <p><strong>Original Text:</strong> {{ original_text }}</p>
             <p><strong>Encrypted Text:</strong> {{ result_text }}</p>
+            <p><strong>Key:</strong>{{ key }}</p>
         {% elif action == 'Decryption' %}
             <p><strong>Original Text:</strong> {{ original_text }}</p>
             <p><strong>Decrypted Text:</strong> {{ result_text }}</p>
         {% endif %}
+
     </div>
 </body>
 </html>
