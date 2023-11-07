@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from vigenere import views   # Asegúrate de importar correctamente las vistas
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('vigenere/', views.vigenere, name='vigenere'),
     path('desplazamiento/', include('desplazamiento.urls'))
 ]

@@ -1,0 +1,13 @@
+<!-- En vigenere_form.html -->
+<form method="post">
+    {% csrf_token %}
+    Texto: <input type="text" name="text"><br>
+    Clave: <input type="text" name="key"><br>
+    <input type="submit" name="encrypt" value="Cifrar">
+    <input type="submit" name="decrypt" value="Descifrar">
+</form>
+
+{% if result %}
+    <p>Operación: {{ operation }}</p>
+    <p>Resultado: {{ result }}</p>
+{% endif %}
