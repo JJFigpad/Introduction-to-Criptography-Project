@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'desplazamiento',
     'multiplicativo',
     'sustitucion',
-    'afin'
+    'afin',
+    'rabin'
 ]
 
 MIDDLEWARE = [

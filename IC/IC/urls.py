@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from vigenere import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vigenere/', views.vigenere, name='vigenere'),
+    #path('vigenere/', views.SDES, name='sdes'),
+
     path('desplazamiento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
-    path('afin/', include('afin.urls'))
+    path('afin/', include('afin.urls')),
+    path('rabin/', include('rabin.urls')),  
 ]
