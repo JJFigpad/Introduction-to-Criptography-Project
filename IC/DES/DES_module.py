@@ -90,3 +90,44 @@ class SDES:
         fk1_result = self.fk(sw_result, self.subkeys[0])
         decrypted = self.permute(fk1_result, self.inv_IP)
         return decrypted
+
+class DDES:
+    def __init__(self, key):
+        # Initialize with a single key
+        self.sdes = SDES(key)
+
+    def encrypt(self, plaintext):
+        # Encrypt with SDES, then encrypt the result again with SDES
+        intermediate_cipher = self.sdes.encrypt(plaintext)
+        final_cipher = self.sdes.encrypt(intermediate_cipher)
+        return final_cipher
+
+    def decrypt(self, ciphertext):
+        # Decrypt with SDES, then decrypt the result again with SDES
+        intermediate_plain = self.sdes.decrypt(ciphertext)
+        final_plain = self.sdes.decrypt(intermediate_plain)
+        return final_plain
+
+
+class TDES:
+    def __init__(self, key):
+        # Initialize with a single key
+        self.sdes = SDES(key)
+
+    def encrypt(self, plaintext):
+        # First encryption
+        intermediate_cipher1 = self.sdes.encrypt(plaintext)
+        # Decrypt using the same key
+        intermediate_plain = self.sdes.decrypt(intermediate_cipher1)
+        # Second encryption
+        final_cipher = self.sdes.encrypt(intermediate_plain)
+        return final_cipher
+
+    def decrypt(self, ciphertext):
+        # First decryption
+        intermediate_plain1 = self.sdes.decrypt(ciphertext)
+        # Encrypt using the same key
+        intermediate_cipher = self.sdes.encrypt(intermediate_plain1)
+        # Second decryption
+        final_plain = self.sdes.decrypt(intermediate_cipher)
+        return final_plain

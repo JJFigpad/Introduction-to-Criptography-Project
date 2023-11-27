@@ -1,8 +1,8 @@
 from django.shortcuts import render
 import random
 from base64 import b64encode, b64decode
-from .forms import CryptoForm
-from .DES_module import SDES, DDES, TDES  # Reemplaza con el nombre de tu módulo
+from forms import CryptoForm
+from DES_module import SDES, DDES, TDES  # Reemplaza con el nombre de tu módulo
 
 
 def get_binary(number, length):
