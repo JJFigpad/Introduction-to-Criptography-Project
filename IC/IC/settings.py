@@ -41,12 +41,16 @@ INSTALLED_APPS = [
     'multiplicativo',
     'sustitucion',
     'afin',
+<<<<<<< HEAD
     'SDES',
     'permutacion',
     'HillT',
     'HillI',
     'RSA',
     'RSAI'
+=======
+    'rabin'
+>>>>>>> main
 ]
 
 MIDDLEWARE = [
