@@ -1,10 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import EncryptionForm
-<<<<<<< HEAD
 from operator import itemgetter
-=======
->>>>>>> main
 
 # Create your views here.
 
@@ -33,7 +30,6 @@ class Desplazamiento:
             cripText[i] %= 256  # Adjust for the 256-character range
         return self.__postProcess(cripText)
 
-<<<<<<< HEAD
     def __Ngrams(self, n):
       l = [self.T[i:i+n] for i in range (0, len(self.T)-n+1)]
       length = len(l)
@@ -51,19 +47,12 @@ class Desplazamiento:
     def decryption(self):
         letter1 = self.__Ngrams(1)
         letter3 = self.__Ngrams(3)
-=======
-    def decryption(self):
->>>>>>> main
         clearText = self.__preProcess()
         for i in range(len(clearText)):
             if isinstance(clearText[i], int):
                 clearText[i] -= self.k
                 clearText[i] %= 256  # Adjust for the 256-character range
-<<<<<<< HEAD
         return self.__postProcess(clearText),letter1,letter3
-=======
-        return self.__postProcess(clearText)
->>>>>>> main
 
 def print_desplazamiento(request):
     if request.method == 'POST':
@@ -84,7 +73,6 @@ def print_desplazamiento(request):
                 
             elif action == 'decrypt':
                 tc = Desplazamiento(text_to_encrypt, k_value)
-<<<<<<< HEAD
                 dec,most_frequent_letter,most_frequent_trigram = tc.decryption()
                 print('Most Frequent Letter:', most_frequent_letter)
                 print('Most Frequent Trigram:', most_frequent_trigram)
@@ -94,13 +82,6 @@ def print_desplazamiento(request):
                     'action': 'Decryption',
                     'most_frequent_letter': most_frequent_letter,
                     'most_frequent_trigram': most_frequent_trigram,
-=======
-                dec = tc.decryption()
-                context = {
-                    'original_text': text_to_encrypt,
-                    'result_text': dec,  # Use 'result_text' instead of 'encrypted_text'
-                    'action': 'Decryption',  # Update the action
->>>>>>> main
                 }
                 
             context['form'] = form

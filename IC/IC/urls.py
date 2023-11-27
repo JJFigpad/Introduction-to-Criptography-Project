@@ -18,30 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from vigenere import views
 
-<<<<<<< HEAD
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vigenere/', views.vigenere, name='vigenere'),
-=======
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('vigenere/', views.vigenere, name='vigenere'),
-    #path('vigenere/', views.SDES, name='sdes'),
-
->>>>>>> main
     path('desplazamiento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
     path('afin/', include('afin.urls')),
-<<<<<<< HEAD
+    path('rabin/', include('rabin.urls')),
     path('SDES/', include('SDES.urls')),
     path('permutacion/', include('permutacion.urls')),
     path('hillT/', include('HillT.urls')),
     path('hillI/', include('HillI.urls')),
     path('RSA/', include('RSA.urls')),
     path('RSAI/', include('RSAI.urls'))
-=======
-    path('rabin/', include('rabin.urls')),  
->>>>>>> main
 ]
