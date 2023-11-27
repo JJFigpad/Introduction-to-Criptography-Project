@@ -11,6 +11,12 @@
             <label for="text_input">Text:</label>
             <input type="text" id="text_input" name="text_input"><br>
         
+            <label for="a_value">Value of 'a':</label>
+            <input type="number" id="a_value" name="a_value" min="1" max="255"><br>
+
+            <label for="b_value">Value of 'k':</label>
+            <input type="number" id="b_value" name="b_value" min="0" max="255"><br>
+            
             <label>Select Action:</label>
             <input type="radio" id="encrypt" name="action" value="encrypt" checked>
             <label for="encrypt">Encrypt</label>
@@ -28,6 +34,8 @@
             <p><strong>Key:</strong>{{ key }}</p>
         {% elif action == 'Decryption' %}
             <p><strong>Original Text:</strong> {{ original_text }}</p>
+            <p><strong>Most Frequent Letter:</strong> {{ most_frequent_letter }}</p>
+            <p><strong>Most Frequent Trigram:</strong> {{ most_frequent_trigram }}</p>
             <p><strong>Decrypted Text:</strong> {{ result_text }}</p>
         {% endif %}
 

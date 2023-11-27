@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'desplazamiento',
     'multiplicativo',
     'sustitucion',
-    'afin'
+    'afin',
+    'SDES',
+    'permutacion',
+    'HillT',
+    'HillI',
+    'RSA',
+    'RSAI'
 ]
 
 MIDDLEWARE = [

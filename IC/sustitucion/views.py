@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import EncryptionForm
 from random import shuffle
+from operator import itemgetter
 
 # Create your views here.
 
@@ -49,12 +50,24 @@ class Sustitucion:
             cripText[i] = self.k[cripText[i]]
         return self.__postProcess(cripText)
 
+    def __Ngrams(self, n):
+        l = [self.T[i:i+n] for i in range (0, len(self.T)-n+1)]
+        length = len(l)
+        frec = {}
+        for i in l:
+            if i not in frec.keys():
+                frec[i] = 1
+            frec[i] += 1
+        for i in frec.keys():
+            frec[i] /= length
+        frec = dict(sorted(frec.items(), key = itemgetter(1)))
+        #r = abs(ord(list(frec.keys())[-1]) - ord('e'))
+        return list(frec.keys())[-1],frec[list(frec.keys())[-1]]
+
     def decryption(self):
-        clearText = self.__preProcess()
-        inv = self.__inv()
-        for i in range(len(clearText)):
-            clearText[i] = inv[clearText[i]]
-        return self.__postProcess(clearText)
+        letter1 = self.__Ngrams(1)
+        letter3 = self.__Ngrams(3)
+        return letter1,letter3
 
 def print_sustitucion(request):
     if request.method == 'POST':
@@ -76,11 +89,14 @@ def print_sustitucion(request):
                 
             elif action == 'decrypt':
                 tc = Sustitucion(text_to_encrypt)
-                dec = tc.decryption()
+                most_frequent_letter,most_frequent_trigram = tc.decryption()
+                print('Most Frequent Letter:', most_frequent_letter)
+                print('Most Frequent Trigram:', most_frequent_trigram)
                 context = {
                     'original_text': text_to_encrypt,
-                    'result_text': dec,  # Use 'result_text' instead of 'encrypted_text'
-                    'action': 'Decryption',  # Update the action
+                    'action': 'Decryption',
+                    'most_frequent_letter': most_frequent_letter,
+                    'most_frequent_trigram': most_frequent_trigram,
                 }
                 
             context['form'] = form

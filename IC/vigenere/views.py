@@ -2,7 +2,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from . import views
-
 from .utils import vigenere_cipher, vigenere_decipher
 
 def vigenere(request):

@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from vigenere import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +24,11 @@ urlpatterns = [
     path('desplazamiento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
-    path('afin/', include('afin.urls'))
+    path('afin/', include('afin.urls')),
+    path('SDES/', include('SDES.urls')),
+    path('permutacion/', include('permutacion.urls')),
+    path('hillT/', include('HillT.urls')),
+    path('hillI/', include('HillI.urls')),
+    path('RSA/', include('RSA.urls')),
+    path('RSAI/', include('RSAI.urls'))
 ]
