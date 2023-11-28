@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sun$a1ts0%^bov=b!=ae#$l%x1!v%fur9ugu9tr1l3kw*l1xpb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = TRUE
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -46,11 +46,12 @@ INSTALLED_APPS = [
     'AES1',
     'permutacion',
     'HillT',
-    'HillI',
+    #'HillI',
     'RSA',
     'RSAI',
     'DES',
-    'DESimagen'
+    'DESimagen',
+    'ELGAMAL1',
     
 ]
 

@@ -25,9 +25,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vigenere/', views.vigenere, name='vigenere'),
-    #path('vigenere/', views.SDES, name='sdes'),
-
-    path('desplaza  miento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
     path('afin/', include('afin.urls')),
@@ -45,7 +42,8 @@ urlpatterns = [
     path('RSA/', include('RSA.urls')),
     path('RSAI/', include('RSAI.urls')),
     path('DES/', include('DES.urls')),
-    path('DESimagen/', include('DESimagen.urls'))
+    path('DESimagen/', include('DESimagen.urls')),
+    path('ELGAMAL1/',include('ELGAMAL1.urls')),
   
 ]
 if settings.DEBUG:
