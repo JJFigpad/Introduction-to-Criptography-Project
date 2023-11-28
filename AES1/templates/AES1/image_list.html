@@ -1,0 +1,70 @@
+<!-- image_list.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Última Imagen</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+       .image-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            max-width: 80%; /* Ajusta el tamaño máximo al ancho de su contenedor */
+        }
+
+        .img-fluid {
+            max-width: 80%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Imágenes</h3>
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <h3>Original</h3>
+                        {% if original_image %}
+                            <div class="image-content">
+                                <img src="{{ original_image.url }}" alt="{{ original_image.title }}" class="img-fluid"/>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if encrypted_image %}
+                    <div class="image-wrapper">
+                        <h3>Encriptado</h3>
+                        <div class="image-content">
+                            <img src="{{ encrypted_image.url }}" alt="{{ encrypted_image.title }}" class="img-fluid"/>
+                        </div>
+                        <p>Encriptado exitosamente. Clave utilizada: {{ encryption_key }}</p>
+                    </div>
+                    {% endif %}
+
+                    <div class="image-wrapper">
+                        <h3>Desencriptado</h3>
+                        {% if decrypted_image %}
+                            <div class="image-content">
+                                <img src="{{ decrypted_image.url }}" alt="{{ decrypted_image.title }}" class="img-fluid"/>
+                            </div>
+                            <p>Desencriptado exitosamente. Clave utilizada: {{ decrypted_key }}</p>
+                        {% else %}
+                            <p>La imagen no pudo ser desencriptada.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar Imágenes - AES</title>
+    <!-- Enlace a Bootstrap desde tu instalación local -->
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #481DCB, #6F0FCB); /* Degradado azul */
+            color: #a8a2a2; /* Texto blanco */
+            font-family: 'Arial', sans-serif; /* Establecer una fuente predeterminada */
+        }
+
+        .container {
+            width: 50%;
+        }
+
+        .form-container {
+            background-color: #ffffff; /* Fondo blanco para el formulario */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sutil sombra */
+        }
+
+        h1, h2,h3 {
+            text-align: center;
+            color: #481DCB; /* Color azul */
+        }
+
+        button.btn-primary {
+            background-color: #481DCB; /* Fondo azul para el botón principal */
+            border-color: #481DCB; /* Color de borde igual al fondo para un aspecto uniforme */
+        }
+
+        button.btn-primary:hover {
+            background-color: #6F0FCB; /* Cambia el color al pasar el ratón sobre el botón */
+            border-color: #6F0FCB;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="{% static 'Imagen2.png' %}" alt="Logo"  style="max-height: 300px;">
+            
+            
+        </div>
+        <div class="form-container mt-4">
+            <h1>Cargar Imágenes - AES</h1>
+            <form method="post" enctype="multipart/form-data" id="uploadForm">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ image_form.as_p }}
+                </div>
+
+                <h2 class="mt-4">Encriptación / Desencriptación</h2>
+                <div id="encryptionSection" class="mb-3">
+                    {{ encryption_form.as_p }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cargar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Agrega Vue.js desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</body>
+</html>

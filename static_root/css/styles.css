@@ -1,0 +1,52 @@
+/* static/css/styles.css */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #481DCB, #6F0FCB);
+    color: #f5f4f4;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 50%;
+    background-color: #afacac; /* Fondo blanco para el contenedor */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sutil sombra */
+
+}
+
+.form-container {
+    background-color: #d5d4d4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2,h3 {
+    text-align: center;
+    color: #481DCB;
+}
+
+button.btn-primary {
+    background-color: #481DCB;
+    border-color: #481DCB;
+}
+
+button.btn-primary:hover {
+    background-color: #6F0FCB;
+    border-color: #6F0FCB;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}

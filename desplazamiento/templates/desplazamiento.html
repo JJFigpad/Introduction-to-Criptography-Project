@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cifrado por Desplazamiento</title>
+</head>
+<body>
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h2>Cifrado por Desplazamiento</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="text_input">Text:</label>
+            <input type="text" id="text_input" name="text_input"><br>
+            
+            <label for="k_value">Value of 'k':</label>
+            <input type="number" id="k_value" name="k_value" min="1" max="255"><br>
+        
+            <label>Select Action:</label>
+            <input type="radio" id="encrypt" name="action" value="encrypt" checked>
+            <label for="encrypt">Encrypt</label>
+            
+            <input type="radio" id="decrypt" name="action" value="decrypt">
+            <label for="decrypt">Decrypt</label><br>
+            
+            <input type="submit" value="Submit">
+        </form>        
+        
+        <h2>{{ action }} Result</h2>
+        {% if action == 'Encryption' %}
+            <p><strong>Original Text:</strong> {{ original_text }}</p>
+            <p><strong>Encrypted Text:</strong> {{ result_text }}</p>
+        {% elif action == 'Decryption' %}
+            <p><strong>Original Text:</strong> {{ original_text }}</p>
+            <p><strong>Decrypted Text:</strong> {{ result_text }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

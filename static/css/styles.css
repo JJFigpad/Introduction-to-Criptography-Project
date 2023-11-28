@@ -1,0 +1,69 @@
+/* static/css/styles.css */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #481DCB, #6F0FCB);
+    color: #f5f4f4;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 80%; /* Ajusté el ancho del contenedor */
+    background-color: #afacac;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px; /* Agregué un margen superior para separar del borde superior */
+}
+
+.form-container {
+    background-color: #d5d4d4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #481DCB;
+}
+
+button.btn-primary {
+    background-color: #481DCB;
+    border-color: #481DCB;
+}
+
+button.btn-primary:hover {
+    background-color: #6F0FCB;
+    border-color: #6F0FCB;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-container {
+    display: flex; /* Cambié a flex para que funcione con la nueva estructura HTML */
+    flex-direction: column; /* Cambié a columna para que los elementos estén uno encima del otro */
+    align-items: center; /* Centra los elementos horizontalmente */
+    margin-top: 20px; /* Añadí margen superior para separar del contenido superior */
+}
+
+.image-wrapper {
+    max-width: 100%;
+    margin-top: 10px; /* Espacio entre las imágenes y los títulos */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
