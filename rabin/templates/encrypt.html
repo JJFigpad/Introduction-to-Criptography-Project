@@ -1,8 +1,0 @@
-<form method="post" action="{% url 'encrypt' %}">
-    {% csrf_token %}
-    <label for="message">Mensaje:</label>
-    <textarea name="message" rows="4" cols="50"></textarea><br>
-    <label for="bits">Bits (opcional, por defecto 60):</label>
-    <input type="number" name="bits" min="1" value="60"><br>
-    <input type="submit" value="Cifrar">
-</form>

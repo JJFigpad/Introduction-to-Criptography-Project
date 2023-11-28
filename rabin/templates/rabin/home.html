@@ -1,17 +1,31 @@
-<h2>Cifrado y Descifrado</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <h2>Cifrado y Descifrado</h2>
 
-<form method="post" action="{% url 'home' %}">
-    {% csrf_token %}
-    {% include 'rabin/crypto_form.html' with form=form %}
-    <button type="submit" name="action" value="encrypt">Cifrar</button>
-    <button type="submit" name="action" value="decrypt">Descifrar</button>
-</form>
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            {% include 'rabin/crypto_form.html' with form=form %}
+            <button type="submit" name="action" value="encrypt">Cifrar</button>
+            <button type="submit" name="action" value="decrypt">Descifrar</button>
+        </form>
+        
+        {% if p and q and n and ciphertext and decrypted_message %}
+            <h3>Resultados:</h3>
+            <p>p = {{ p }}</p>
+            <p>q = {{ q }}</p>
+            <p>n = {{ n }}</p>
+            <p>Cifrado = {{ ciphertext }}</p>
+            <p>Descifrado = {{ decrypted_message }}</p>
+        {% endif %}
+    </body>
+</html>
 
-{% if p and q and n and ciphertext and decrypted_message %}
-    <h3>Resultados:</h3>
-    <p>p = {{ p }}</p>
-    <p>q = {{ q }}</p>
-    <p>n = {{ n }}</p>
-    <p>Cifrado = {{ ciphertext }}</p>
-    <p>Descifrado = {{ decrypted_message }}</p>
-{% endif %}
