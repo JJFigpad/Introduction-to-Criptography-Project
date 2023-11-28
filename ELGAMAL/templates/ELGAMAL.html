@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ElGamal Encryption/Decryption</title>
+</head>
+<body>
+    <h1>ElGamal Cryptographic Operations</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Additional fields for ElGamal algorithm can be added here -->
+        <!-- Example: Key input, message input, etc. -->
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if result %}
+        <h2>Result:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
