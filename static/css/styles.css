@@ -12,11 +12,13 @@ body {
 }
 
 .container {
-    width: 80%; /* Ajusté el ancho del contenedor */
+    width: 80%;
+    max-width: 800px; /* Establecí un ancho máximo para mejorar la legibilidad en pantallas grandes */
     background-color: #afacac;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    margin-top: 20px; /* Agregué un margen superior para separar del borde superior */
+    margin: 20px auto; /* Centralicé el contenedor en la página */
+    padding: 20px; /* Añadí un relleno al contenedor principal para mejorar la apariencia */
 }
 
 .form-container {
@@ -24,16 +26,19 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
 h1, h2, h3 {
     text-align: center;
-    color: #481DCB;
+    color: #dbd9e3;
+    margin-bottom: 20px; /* Añadí margen inferior para separar de otros elementos */
 }
 
 button.btn-primary {
     background-color: #481DCB;
     border-color: #481DCB;
+    margin-top: 10px; /* Añadí margen superior al botón */
 }
 
 button.btn-primary:hover {
@@ -43,7 +48,7 @@ button.btn-primary:hover {
 
 .logo-container {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Añadí más margen inferior para separar del contenido siguiente */
 }
 
 .logo-container img {
@@ -52,15 +57,15 @@ button.btn-primary:hover {
 }
 
 .image-container {
-    display: flex; /* Cambié a flex para que funcione con la nueva estructura HTML */
-    flex-direction: column; /* Cambié a columna para que los elementos estén uno encima del otro */
-    align-items: center; /* Centra los elementos horizontalmente */
-    margin-top: 20px; /* Añadí margen superior para separar del contenido superior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .image-wrapper {
     max-width: 100%;
-    margin-top: 10px; /* Espacio entre las imágenes y los títulos */
+    margin-top: 10px;
 }
 
 .img-fluid {

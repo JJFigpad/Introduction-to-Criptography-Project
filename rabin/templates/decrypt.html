@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'decrypt' %}">
+    {% csrf_token %}
+    <label for="ciphertext">Texto cifrado:</label>
+    <input type="number" name="ciphertext"><br>
+    <label for="p">p:</label>
+    <input type="number" name="p"><br>
+    <label for="q">q:</label>
+    <input type="number" name="q"><br>
+    <input type="submit" value="Descifrar">
+</form>

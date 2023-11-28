@@ -1,7 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Cifrado Afin</title>
+
 </head>
 <body>
     <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
@@ -32,5 +37,7 @@
         {% endif %}
 
     </div>
+     <!-- Agrega Vue.js desde un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </body>
 </html>

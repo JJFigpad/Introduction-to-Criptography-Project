@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {{ form.non_field_errors }}
 {% for field in form %}
     <div class="form-group">

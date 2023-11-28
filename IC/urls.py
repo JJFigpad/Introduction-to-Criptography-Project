@@ -27,7 +27,7 @@ urlpatterns = [
     path('vigenere/', views.vigenere, name='vigenere'),
     #path('vigenere/', views.SDES, name='sdes'),
 
-    path('desplazamiento/', include('desplazamiento.urls')),
+    path('desplaza  miento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
     path('afin/', include('afin.urls')),

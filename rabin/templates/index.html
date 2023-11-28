@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src='main.js'></script>
+</head>
+<body>
+    
+<h2>Bienvenido a la aplicación de cifrado/descifrado</h2>
+
+<p>Selecciona una opción:</p>
+<ul>
+    <li><a href="{% url 'encrypt' %}">Cifrar</a></li>
+    <li><a href="{% url 'decrypt' %}">Descifrar</a></li>
+</ul>
+</body>
+</html>
