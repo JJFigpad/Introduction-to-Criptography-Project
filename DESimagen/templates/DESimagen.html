@@ -40,10 +40,16 @@
             <img src="data:image/png;base64,{{original_image}}" alt="Original Image">
         {% endif %}
         
-        {% if action == 'Encryption' %}
+        {% if action == 'encrypt' %}
             <h2>Result</h2>
             <p><strong>Image:</strong></p>
             <img src="data:image/png;base64,{{result_image}}" alt="Encrypted Image">
+        {% endif %}
+
+        {% if action == 'decrypt' %}
+            <h2>Result</h2>
+            <p><strong>Image:</strong></p>
+            <img src="data:image/png;base64,{{result_image}}" alt="Decrypted Image">
         {% endif %}
     </div>
 </body>

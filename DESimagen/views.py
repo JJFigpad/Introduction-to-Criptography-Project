@@ -13,30 +13,37 @@ def get_base64_from_image(image_path):
 
 def crypto_view(request):
     if request.method == 'POST':
-        if request.method == 'POST':
-            form = ImageCryptoForm(request.POST)
+        form = ImageCryptoForm(request.POST, request.FILES)
         if form.is_valid():
             operation = form.cleaned_data['operation']
             type_DES = form.cleaned_data['type_DES']
             mode = form.cleaned_data['mode']
-            image_to_encrypt = form.cleaned_data['image_input']
+            image_input = form.cleaned_data['image_input']
             key = form.cleaned_data['key'] or generate_key()  
             IV = form.cleaned_data['IV'] or generate_IV()  
             # Save the uploaded image to a temporary file
             with NamedTemporaryFile(delete=False) as temp_file:
-                temp_file.write(image_to_encrypt.read())
+                temp_file.write(image_input.read())
                 image_path = temp_file.name
-            
+
             or_base64 = get_base64_from_image(image_path)
-            img_bytes = [i for i in base64.b64decode(or_base64)]
-            img_bytes = [get_binary(i, 8) for i in img_bytes]
+            
+            with Image.open(image_path) as img:  # Open the image from the provided path
+                pixel_array = np.array(img)      # Convert the image to a NumPy array
+                pixel_bytes = pixel_array.tobytes()  # Convert the NumPy array to bytes
+            
+            img_size = img.size
 
             if operation == 'encrypt':
-                result_bytes = encrypt_image(type_DES, mode, img_bytes, key, IV)
+                result_bytes = encrypt_image(type_DES, mode, pixel_bytes, key, IV)
             else:
-                result_bytes = decrypt_image(type_DES, mode, img_bytes, key, IV)
+                result_bytes = decrypt_image(type_DES, mode, pixel_bytes, key, IV)
 
-            enc_base64 = base64.b64encode(result_bytes)
+            pixel_array = np.frombuffer(result_bytes, dtype=np.uint8).reshape(img_size[1], img_size[0], -1)
+            img = Image.fromarray(pixel_array)
+
+            img.save("encriptada.png")
+            enc_base64 = get_base64_from_image("encriptada.png")
 
             # Remove the temporary image file
             os.remove(image_path)
@@ -44,13 +51,14 @@ def crypto_view(request):
             context = {
                     'original_image': or_base64,
                     'result_image': enc_base64,
-                    'action': 'Encryption',
+                    'action': operation,
                 }
 
             context['form'] = form
-            return render(request, 'DESimagenes.html', context)
+            return render(request, 'DESimagen.html', context)
 
     else:
         form = ImageCryptoForm()
 
-    return render(request, 'DESimagen.html', {'form': form})
+    context = {'form': form}
+    return render(request, 'DESimagen.html', context)

@@ -1,5 +1,8 @@
 from .DES_module import SDES,DDES, TDES
 import random
+import numpy as np
+from io import BytesIO
+from PIL import Image
 
 def get_binary(number, length):
     # Converts an integer to a binary string of specified length.
