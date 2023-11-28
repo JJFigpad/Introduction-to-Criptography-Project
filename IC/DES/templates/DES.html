@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encriptar/Desencriptar</title>
+</head>
+<body>
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h2>Encriptar/Desencriptar</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="id_operation">Operación:</label><br>
+                {{ form.operation }}
+            </div>
+            <div>
+                <label for="id_type_DES">Tipo de DES:</label><br>
+                {{ form.type_DES }}
+            </div>
+            <div>
+                <label for="id_mode">Modo de Operación:</label><br>
+                {{ form.mode }}
+            </div>
+            <div>
+                <label for="id_text">Texto (Plano o Cifrado):</label><br>
+                {{ form.text }}
+            </div>
+            <div>
+                <label for="id_key">Clave:</label><br>
+                {{ form.key }}
+            </div>
+            <div>
+                <label for="id_IV">Vector de Inicialización (IV):</label><br>
+                {{ form.IV }}
+            </div>
+            <input type="submit" value="Submit">
+        </form>        
+
+        <h2>Resultado</h2>
+        <!-- Aquí puedes mostrar el resultado de la operación -->
+        {% if result %}
+            <p><strong>Resultado:</strong> {{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

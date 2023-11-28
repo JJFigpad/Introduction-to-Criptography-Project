@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cifrado RSA (Imagenes)</title>
+</head>
+<body>
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h2>Cifrado RSA (Imagenes)</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="image_input">Image:</label>
+            <input type="file" id="image_input" name="image_input" accept="image/*"><br>
+        
+            <label>Select Action:</label>
+            <input type="radio" id="encrypt" name="action" value="encrypt" checked>
+            <label for="encrypt">Encrypt</label>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if original_image %}
+        <h2>Original Image</h2>
+            <img src="data:image/png;base64,{{ original_image }}" alt="Original Image">
+        {% endif %}
+        
+        {% if action == 'Encryption' %}
+            <h2>Result</h2>
+            <p><strong>Encrypted Image:</strong></p>
+            <img src="data:image/png;base64,{{ result_image }}" alt="Encrypted Image">
+        {% endif %}
+    </div>
+</body>
+</html>

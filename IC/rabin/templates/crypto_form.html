@@ -1,0 +1,16 @@
+{{ form.non_field_errors }}
+{% for field in form %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+    </div>
+{% endfor %}
+<label for="message">Mensaje:</label>
+<input type="text" name="message" required>
+<br>
+<label for="mode">Modo:</label>
+<select name="mode" required>
+    <option value="encrypt">Cifrar</option>
+    <option value="decrypt">Descifrar</option>
+</select>

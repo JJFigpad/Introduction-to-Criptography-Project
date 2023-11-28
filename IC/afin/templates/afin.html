@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cifrado Afin</title>
+</head>
+<body>
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h2>Cifrado Afin</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="text_input">Text:</label>
+            <input type="text" id="text_input" name="text_input"><br>
+        
+            <label for="a_value">Value of 'a':</label>
+            <input type="number" id="a_value" name="a_value" min="1" max="255"><br>
+
+            <label for="b_value">Value of 'k':</label>
+            <input type="number" id="b_value" name="b_value" min="0" max="255"><br>
+            
+            <label>Select Action:</label>
+            <input type="radio" id="encrypt" name="action" value="encrypt" checked>
+            <label for="encrypt">Encrypt</label>
+            
+            <input type="radio" id="decrypt" name="action" value="decrypt">
+            <label for="decrypt">Decrypt</label><br>
+            
+            <input type="submit" value="Submit">
+        </form>        
+        
+        <h2>{{ action }} Result</h2>
+        {% if action == 'Encryption' %}
+            <p><strong>Original Text:</strong> {{ original_text }}</p>
+            <p><strong>Encrypted Text:</strong> {{ result_text }}</p>
+            <p><strong>Key:</strong>{{ key }}</p>
+        {% elif action == 'Decryption' %}
+            <p><strong>Original Text:</strong> {{ original_text }}</p>
+            <p><strong>Most Frequent Letter:</strong> {{ most_frequent_letter }}</p>
+            <p><strong>Most Frequent Trigram:</strong> {{ most_frequent_trigram }}</p>
+            <p><strong>Decrypted Text:</strong> {{ result_text }}</p>
+        {% endif %}
+
+    </div>
+</body>
+</html>
