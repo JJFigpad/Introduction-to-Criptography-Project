@@ -4,7 +4,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background: linear-gradient(to right, #481DCB, #6F0FCB);
     color: #f5f4f4;
@@ -12,13 +12,13 @@ body {
 }
 
 .container {
-    width: 80%;
-    max-width: 800px; /* Establecí un ancho máximo para mejorar la legibilidad en pantallas grandes */
+    width: 90% auto;
+    max-width: 800px auto;
     background-color: #afacac;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    margin: 20px auto; /* Centralicé el contenedor en la página */
-    padding: 20px; /* Añadí un relleno al contenedor principal para mejorar la apariencia */
+    margin: 20px auto;
+    padding: 20px;
 }
 
 .form-container {
@@ -32,13 +32,14 @@ body {
 h1, h2, h3 {
     text-align: center;
     color: #dbd9e3;
-    margin-bottom: 20px; /* Añadí margen inferior para separar de otros elementos */
+    margin-bottom: 20px;
 }
 
 button.btn-primary {
     background-color: #481DCB;
     border-color: #481DCB;
-    margin-top: 10px; /* Añadí margen superior al botón */
+    margin-top: 10px;
+    padding: 10px 20px; /* Añadí un relleno al botón */
 }
 
 button.btn-primary:hover {
@@ -48,7 +49,7 @@ button.btn-primary:hover {
 
 .logo-container {
     text-align: center;
-    margin-bottom: 20px; /* Añadí más margen inferior para separar del contenido siguiente */
+    margin-bottom: 20px;
 }
 
 .logo-container img {

@@ -46,12 +46,15 @@ INSTALLED_APPS = [
     'AES1',
     'permutacion',
     'HillT',
-    #'HillI',
+    'HillI',
     'RSA',
     'RSAI',
     'DES',
     'DESimagen',
     'ELGAMAL1',
+    'DSA',
+    'Menezes'
+    
     
 ]
 
@@ -70,7 +73,9 @@ ROOT_URLCONF = 'IC.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'vigenere' / 'templates'/'vigenere'],
+        #'DIRS': [BASE_DIR  / 'templates'/'vigenere'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

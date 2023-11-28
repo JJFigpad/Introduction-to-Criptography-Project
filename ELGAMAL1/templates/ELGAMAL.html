@@ -22,5 +22,15 @@
         <h2>Result:</h2>
         <p>{{ result }}</p>
     {% endif %}
+
+    {% if public_key %}
+        <h2>Public Key:</h2>
+        <p>{{ public_key }}</p>
+    {% endif %}
+
+    {% if private_key %}
+        <h2>Private Key:</h2>
+        <p>{{ private_key }}</p>
+    {% endif %}
 </body>
 </html>

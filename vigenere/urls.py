@@ -1,6 +1,7 @@
+
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('printRSAI/', views.print_rsaI,name='RSAI')
+    path('vigenere/', views.vigenere, name='vigenere'),
 ]

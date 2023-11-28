@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('printRSAI/', views.print_rsaI,name='RSAI')
+    path('Menezes/', views.crypto_view, name='Menezes'),
 ]

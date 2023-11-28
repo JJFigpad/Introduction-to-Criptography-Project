@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
 import random
 import random
 from .forms import CryptoForm
@@ -38,11 +35,10 @@ def generate_key(length=5):
     p = generate_prime_number(length)
     alpha = find_primitive_root(p)
     k = random.randint(2, p - 2)
-    beta = pow(alpha, k, p)
-    return f"{p},{alpha},{beta}", k   
+    y = pow(alpha, k, p)
+    return f"{p},{alpha},{k}", k   
 
 def encrypt(x, public_key, private_key):
-    x = int(x)
     k = int(private_key)
     p,alpha,beta = public_key
     y1 = pow(alpha,k,p)
@@ -51,7 +47,7 @@ def encrypt(x, public_key, private_key):
 
 def decrypt(y,private_key,p):
     y1,y2 = y.split(",")
-    y1, y2, k = int(y1), int(y2), int(private_key)
+    y1, y2, k = int(y1), int(y2), int(private_key), int(p)
     x = (y2 * modular_inverse(pow(y1, k, p), p)) % p
     return str(x)
 
@@ -66,23 +62,20 @@ def crypto_view(request):
             if public_key == "" or private_key == "":
                 public_key,private_key = generate_key()
             else:
-                private_key = int(private_key)
+                private_key = public_key.split(",")[0]
             
-            public_key = public_key.split(",")
-            public_key = (int(public_key[0]),int(public_key[1]),int(public_key[2]))
-
             if operation == 'encrypt':
                 result = encrypt(input, public_key, private_key)
             else:
-                p = public_key[0]
+                p = public_key.split(",")[0]
                 result = decrypt(input,private_key,p)
 
-            context = {'public_key': public_key,'private_key': private_key, 'result': result}
+            context = {'public_key': public_key,'private_key': public_key, 'result': result}
             context['form'] = form
-            return render(request, 'ELGAMAL.html', context)
+            return render(request, 'DSA.html', context)
 
     else:
         form = CryptoForm()
 
     context = {'form': form}
-    return render(request, 'ELGAMAL.html', context)
+    return render(request, 'DSA.html', context)

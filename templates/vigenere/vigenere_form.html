@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Cifrado de Vigenere</title>
+</head>
+<body>
+
+<h1>Cifrado de Vigenere</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="text">Texto:</label>
+    <input type="text" name="text" required><br>
+
+    <label for="key">Clave:</label>
+    <input type="text" name="key" required><br>
+
+    <input type="submit" name="encrypt" value="Cifrar">
+    <input type="submit" name="decrypt" value="Descifrar">
+</form>
+
+{% if result %}
+    <h2>Resultado de la Operación:</h2>
+    <p><strong>Operación:</strong> {{ operation }}</p>
+    <p><strong>Resultado:</strong> {{ result }}</p>
+{% endif %}
+
+</body>
+</html>

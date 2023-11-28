@@ -19,18 +19,22 @@ from django.urls import path, include
 from vigenere import views
 from django.conf.urls.static import static
 from django.conf import settings
+from .views import index
+
 
 
 
 urlpatterns = [
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('vigenere/', views.vigenere, name='vigenere'),
+    #path('vigenere/', views.vigenere, name='vigenere'),
+    path('vigenere/',include("vigenere.urls")),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
     path('afin/', include('afin.urls')),
     path('rabin/', include('rabin.urls')),
     path('AES1/', include('AES1.urls')),
-    path('vigenere/', views.vigenere, name='vigenere'),
+    #path('vigenere/', views.vigenere, name='vigenere'),
     path('desplazamiento/', include('desplazamiento.urls')),
     path('multiplicativo/', include('multiplicativo.urls')),
     path('sustitucion/', include('sustitucion.urls')),
@@ -44,6 +48,8 @@ urlpatterns = [
     path('DES/', include('DES.urls')),
     path('DESimagen/', include('DESimagen.urls')),
     path('ELGAMAL1/',include('ELGAMAL1.urls')),
+    path('Menezes/',include('Menezes.urls')),
+    path('DSA/',include('DSA.urls')),    
   
 ]
 if settings.DEBUG:

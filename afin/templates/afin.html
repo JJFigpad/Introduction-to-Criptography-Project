@@ -9,6 +9,8 @@
 
 </head>
 <body>
+    <form method="post" action="{% url 'tu_vista' %}">
+
     <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
         <h2>Cifrado Afin</h2>
         <form method="POST">
@@ -39,5 +41,7 @@
     </div>
      <!-- Agrega Vue.js desde un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <a href="{% url 'index' %}" class="btn btn-primary">Volver a la Página Inicial</a>
+
 </body>
 </html>

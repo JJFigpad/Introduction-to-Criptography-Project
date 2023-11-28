@@ -20,6 +20,6 @@ def vigenere(request):
         else:
             context = {}
 
-        return render(request, 'vigenere_form.html', context)
+        return render(request, 'vigenere/vigenere_form.html', context)
 
-    return render(request, 'vigenere_form.html')
+    return render(request, 'vigenere/vigenere_form.html')

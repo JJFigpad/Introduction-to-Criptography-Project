@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Resto del head... -->
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-3">Bienvenido a</h1>
+        <h1 class="text-center mb-3">CRYPTOENIGMA</h1>
+
+        <div class="text-center mb-4">
+            <center><img src="{% static 'Imagen2.png' %}" alt="Logo" class="img-fluid" style="max-height: 300px;"></center>
+            
+        </div>
+
+        <!-- Cifrados Clásicos -->
+        <div class="mb-4">
+            <h2>Cifrados Clásicos</h2>
+            <ul class="list-group">
+                {% for app_name, app_url in app_list %}
+                    <li class="list-group-item"><a href="{% url app_url %}">{{ app_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Cifrados por Bloques -->
+        <div class="mb-4">
+            <h2>Cifrados por Bloques</h2>
+            <ul class="list-group">
+                {% for app_name, app_url in app_list2 %}
+                    <li class="list-group-item"><a href="{% url app_url %}">{{ app_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Cifrados de Clave Pública -->
+        <div class="mb-4">
+            <h2>Cifrados de Clave Pública</h2>
+            <ul class="list-group">
+                {% for app_name, app_url in app_list3 %}
+                    <li class="list-group-item"><a href="{% url app_url %}">{{ app_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
