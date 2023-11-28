@@ -12,6 +12,9 @@ class CryptoForm(forms.Form):
     # Field for plaintext input or ciphertext input depending on the operation
     input = forms.CharField(label='Input', widget=forms.Textarea, required=False)
 
-    # Fields for public and private keys
-    public_key = forms.CharField(label='Public Key p,alpha,beta', required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
-    private_key = forms.CharField(label='Private Key k', required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    # Private key
+    private_key = forms.CharField(label='Private Key', required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
+
+    #Public key
+    public_alpha = forms.CharField(label='Public alpha', required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
+    public_beta = forms.CharField(label='Public beta', required=False, widget=forms.TextInput(attrs={'readonly':'readonly'}))
