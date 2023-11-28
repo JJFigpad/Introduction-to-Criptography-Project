@@ -43,7 +43,15 @@ INSTALLED_APPS = [
     'sustitucion',
     'afin',
     'rabin',
-    'AES1'
+    'AES1',
+    'permutacion',
+    'HillT',
+    'HillI',
+    'RSA',
+    'RSAI',
+    'DES',
+    'DESimagen'
+    
 ]
 
 MIDDLEWARE = [

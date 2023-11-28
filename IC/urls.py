@@ -33,6 +33,19 @@ urlpatterns = [
     path('afin/', include('afin.urls')),
     path('rabin/', include('rabin.urls')),
     path('AES1/', include('AES1.urls')),
+    path('vigenere/', views.vigenere, name='vigenere'),
+    path('desplazamiento/', include('desplazamiento.urls')),
+    path('multiplicativo/', include('multiplicativo.urls')),
+    path('sustitucion/', include('sustitucion.urls')),
+    path('afin/', include('afin.urls')),
+    path('rabin/', include('rabin.urls')),
+    path('permutacion/', include('permutacion.urls')),
+    path('hillT/', include('HillT.urls')),
+    path('hillI/', include('HillI.urls')),
+    path('RSA/', include('RSA.urls')),
+    path('RSAI/', include('RSAI.urls')),
+    path('DES/', include('DES.urls')),
+    path('DESimagen/', include('DESimagen.urls'))
   
 ]
 if settings.DEBUG:
