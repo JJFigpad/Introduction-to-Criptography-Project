@@ -48,6 +48,8 @@
                             <img src="{{ encrypted_image.url }}" alt="{{ encrypted_image.title }}" class="img-fluid"/>
                         </div>
                         <p>Encriptado exitosamente. Clave utilizada: {{ encryption_key }}</p>
+                        <p>Vector Inicial utilizado: {{ encryption_iv }}</p>
+
                     </div>
                     {% endif %}
 
@@ -61,10 +63,13 @@
                         {% else %}
                             <p>La imagen no pudo ser desencriptada.</p>
                         {% endif %}
+                        <a href="{% url 'index' %}" class="btn btn-primary">Regresar al Inicio</a>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>

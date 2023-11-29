@@ -10,14 +10,15 @@ class Image(models.Model):
     is_encrypted = models.BooleanField(default=False)
     encryption_key = models.CharField(max_length=256, blank=True, null=True)
     decryption_key = models.CharField(max_length=256, blank=True, null=True)
+    encryption_iv = models.CharField(max_length=256, blank=True, null=True)
     aes_mode = models.CharField(max_length=10, default='ecb')  # Agregamos el campo del modo de operación AES
 
 
 
-    def encrypt_image(self, custom_key=None):
+    def encrypt_image(self, custom_key=None,custom_iv=None):
         #if not self.is_encrypted:
             key = custom_key or generate_aes_key_and_iv()[0]
-            iv = custom_key or generate_aes_key_and_iv()[1]
+            iv = custom_iv or generate_aes_key_and_iv()[1]
 
             original_file = self.image_file.path
             print(f"Original image path: {original_file}")
@@ -37,6 +38,7 @@ class Image(models.Model):
                 encode_aes_img_CTR(key,iv,self)
             # Guarda la clave utilizada y marca la imagen como encriptada
             self.encryption_key = key
+            self.encryption_iv = iv
             self.is_encrypted = True
             self.save()
 
@@ -66,4 +68,5 @@ class Image(models.Model):
             self.is_encrypted = False
             self.decryption_key =custom_key
             self.encryption_key = custom_key
+            self.encryption_iv = iv
             self.save()

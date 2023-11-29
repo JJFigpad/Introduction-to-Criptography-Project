@@ -2,8 +2,8 @@
 from django.shortcuts import render
 from .utils import perform_crypto, perform_decryption
 
-def index(request):
-    return render(request, 'rabin/index.html')
+def indexRabin(request):
+    return render(request, 'rabin/indexRabin.html')
 
 def encrypt(request):
     if request.method == 'POST':

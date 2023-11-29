@@ -14,16 +14,21 @@ def image_upload(request):
 
             operation = encryption_form.cleaned_data['operation']
             custom_key = encryption_form.cleaned_data['custom_key']
+            custom_iv = encryption_form.cleaned_data['custom_iv']
             encrypted_image_key = encryption_form.cleaned_data['encrypted_image_key']
+            encrypted_image_iv = encryption_form.cleaned_data['encrypted_image_iv']
 
             if operation == 'encrypt':
                 key = custom_key or generate_aes_key_and_iv()[0]
-                image_instance.encrypt_image(custom_key=key)
+                iv =  custom_iv or generate_aes_key_and_iv()[1]
+                image_instance.encrypt_image(custom_key=key,custom_iv=iv)
+                
 
             elif operation == 'decrypt':
                 # Asegúrate de obtener la clave correcta para la imagen encriptada
                 key = encrypted_image_key or image_instance.encryption_key
-                image_instance.decrypt_image(custom_key=key)
+                iv = encrypted_image_iv
+                image_instance.decrypt_image(custom_key=key,encrypted_image_iv =iv)
 
             return redirect('image_list')
     else:
@@ -53,6 +58,10 @@ def image_list(request):
             'encrypted_image': encrypted_image,
             'decrypted_image': decrypted_image,
             'encryption_key': latest_image_instance.encryption_key,
+            'decryption_key': latest_image_instance.decryption_key,
+            'encryption_iv': latest_image_instance.encryption_iv,
+
+            
         })
     else:
         # Si no hay ninguna instancia, pasa None para ambas imágenes
@@ -61,4 +70,5 @@ def image_list(request):
             'encrypted_image': None,
             'decrypted_image': None,
             'encryption_key': None,
+            'decryption_key': None,
         })

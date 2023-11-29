@@ -43,5 +43,7 @@ class EncryptionForm(forms.Form):
     aes_mode = forms.ChoiceField(choices=AES_MODE_CHOICES, widget=forms.RadioSelect)
 
     custom_key = forms.CharField(required=False, max_length=256, widget=forms.PasswordInput(attrs={'placeholder': 'Clave personalizada'}))
+    custom_iv = forms.CharField(required=False, max_length=256, widget=forms.PasswordInput(attrs={'placeholder': 'IV personalizada'}))
+
     encrypted_image_key = forms.CharField(required=False, max_length=256, widget=forms.PasswordInput(attrs={'placeholder': 'Clave de imagen encriptada'}))
     encrypted_image_iv = forms.CharField(required=False,max_length=32,widget=forms.PasswordInput(attrs={'placeholder':'Iv de la imagen'}))

@@ -20,7 +20,7 @@ def index(request):
     app_list3 = [
         ('RSA','RSA'),
         ('RSAI','RSAI'),
-        ('rabin','index'),
+        ('rabin','indexRabin'),
         ('ELGAMAL1','ELGAMAL1'),
         ('Menezes','Menezes'),
         ('DSA','DSA')    

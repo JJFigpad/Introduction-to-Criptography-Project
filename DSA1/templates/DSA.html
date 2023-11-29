@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Operations</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.2-dist/css/bootstrap.min.css' %}" integrity="sha384-rnJUVlfOu2+k9suL3km28zDp0cTtwsU+4d+slceK95i1BSdFfeUJdCfcKyW5J3nl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>Crypto Operations</h1>
@@ -15,5 +17,7 @@
     {% if result %}
     <p><strong>Result:</strong> {{ result }}</p>
     {% endif %}
+    <a href="{% url 'index' %}" class="btn btn-primary">Regresar al Inicio</a>
+
 </body>
 </html>
